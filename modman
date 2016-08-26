@@ -1,0 +1,4 @@
+src/app/etc/modules/Vianetz_CheckoutAttributes.xml                              app/etc/modules/Vianetz_CheckoutAttributes.xml
+src/app/design/frontend/base/default/template/vianetz_checkoutattributes        app/design/frontend/base/default/template/vianetz_checkoutattributes
+src/app/design/frontend/base/default/layout/vianetz_checkoutattributes.xml      app/design/frontend/base/default/layout/vianetz_checkoutattributes.xml
+src/app/code/community/Vianetz/CheckoutAttributes/                              app/code/community/Vianetz/CheckoutAttributes/
