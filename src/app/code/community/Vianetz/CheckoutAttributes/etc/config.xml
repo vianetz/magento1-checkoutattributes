@@ -15,7 +15,7 @@
 
         <blocks>
             <vianetz_checkoutattributes>
-                <class>Vianetz_CheckoutAttributs_Block</class>
+                <class>Vianetz_CheckoutAttributes_Block</class>
             </vianetz_checkoutattributes>
         </blocks>
 
@@ -118,9 +118,19 @@
         </layout>
     </adminhtml>
 
+    <frontend>
+        <layout>
+            <updates>
+                <vianetz_checkoutattributes>
+                    <file>vianetz_checkoutattributes.xml</file>
+                </vianetz_checkoutattributes>
+            </updates>
+        </layout>
+    </frontend>
+
     <default>
         <vianetz_checkoutattributes>
-            <custom_attributes><!-- insert your custom attribute codes here --></custom_attributes>
+            <custom_attributes><!-- insert your custom attribute codes here with comma-separated attribute codes --></custom_attributes>
         </vianetz_checkoutattributes>
     </default>
 </config>

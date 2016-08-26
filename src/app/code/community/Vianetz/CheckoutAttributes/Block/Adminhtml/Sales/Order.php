@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckoutAttributes Order Collection
+ * CheckoutAttributes Adminhtml Sales Order Block
  *
  * @section LICENSE
  * This file is created by vianetz <info@vianetz.com>.
@@ -19,14 +19,18 @@
  * @license     http://www.vianetz.com/license Commercial Software License
  * @version     %%MODULE_VERSION%%
  */
-class Vianetz_CheckoutAttributes_Model_Mysql4_Sales_Order_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Vianetz_CheckoutAttributes_Block_Adminhtml_Sales_Order extends Mage_Adminhtml_Block_Sales_Order_Abstract
 {
     /**
-     * @return void
+     * @return array
      */
-    public function _construct()
+    public function getCustomVars()
     {
-        parent::_construct();
-        $this->_init('vianetz_checkoutattributes/sales_order');
+        try {
+            return Mage::getModel('vianetz_checkoutattributes/sales_order')
+                ->getByOrder($this->getOrder()->getId());
+        } catch (Exception $ex) {}
+
+        return array();
     }
 }

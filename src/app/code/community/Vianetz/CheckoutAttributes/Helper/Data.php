@@ -1,6 +1,6 @@
 <?php
 /**
- * DefaultPaymentMethod Helper
+ * CheckoutAttributes Helper
  *
  * @section LICENSE
  * This file is created by vianetz <info@vianetz.com>.
@@ -12,7 +12,7 @@
  * to license@vianetz.com so we can send you a copy immediately.
  *
  * @category    Vianetz
- * @package     Vianetz_DefaultPaymentMethod
+ * @package     Vianetz_CheckoutAttributes
  * @author      Christoph Massmann, <C.Massmann@vianetz.com>
  * @link        http://www.vianetz.com
  * @copyright   Copyright (c) 2006-16 vianetz - C. Massmann (http://www.vianetz.com)
