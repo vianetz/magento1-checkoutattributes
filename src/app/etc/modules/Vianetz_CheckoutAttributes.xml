@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_CheckoutAttributes>
+            <codePool>community</codePool>
+            <active>true</active>
+            <depends>
+                <Mage_Core/>
+                <Mage_Checkout/>
+                <Vianetz_Core/>
+            </depends>
+        </Vianetz_CheckoutAttributes>
+    </modules>
+</config>

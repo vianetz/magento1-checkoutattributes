@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <sales_order_view>
+        <reference name="my.account.wrapper">
+            <block type="vianetz_checkoutattributes/sales_order" name="vianetz.checkoutattributes.order" template="vianetz_checkoutattributes/sales/order.phtml" after="sales.order.info"/>
+        </reference>
+    </sales_order_view>
+</layout>
