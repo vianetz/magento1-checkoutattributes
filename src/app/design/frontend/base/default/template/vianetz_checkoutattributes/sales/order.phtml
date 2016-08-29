@@ -3,8 +3,7 @@
     <div class="col">
         <div class="box">
             <div class="box-content">
-                <?php $custom = $this->getCustomVars(); ?>
-                <?php foreach ($custom as $key => $value): ?>
+                <?php foreach ($this->getCustomVars() as $key => $value): ?>
                     <b><?php echo $this->__($key);?></b> : <?php echo $value; ?> <br/>
                 <?php endforeach; ?>
             </div>

@@ -126,16 +126,19 @@ class Vianetz_CheckoutAttributes_Model_Observer extends Mage_Core_Model_Observer
         foreach (Mage::helper('vianetz_checkoutattributes')->getCustomAttributes() as $attributeName) {
             $quoteValue = $quote->getData($attributeName);
             $orderValue = $order->getData($attributeName);
-            if (empty($quoteValue) === false && empty($orderValue) === true) {
-                Mage::getModel('vianetz_checkoutattributes/sales_order')
-                    ->deleteByOrder($order->getId(), $attributeName)
-                    ->setOrderId($order->getId())
-                    ->setKey($attributeName)
-                    ->setValue($quoteValue)
-                    ->save();
 
-                $order->setData($attributeName, $quoteValue);
+            if (empty($quoteValue) === true || empty($orderValue) === false) {
+                continue;
             }
+
+            Mage::getModel('vianetz_checkoutattributes/sales_order')
+                ->deleteByOrder($order->getId(), $attributeName)
+                ->setOrderId($order->getId())
+                ->setKey($attributeName)
+                ->setValue($quoteValue)
+                ->save();
+
+            $order->setData($attributeName, $quoteValue);
         }
 
         return $this;
