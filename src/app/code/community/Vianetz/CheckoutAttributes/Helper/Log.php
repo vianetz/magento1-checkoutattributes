@@ -11,11 +11,11 @@
  * to license@vianetz.com so we can send you a copy immediately.
  *
  * @category    Vianetz
- * @package     Vianetz_Core
+ * @package     Vianetz_CheckoutAttributes
  * @author      Christoph Massmann, <C.Massmann@vianetz.com>
  * @link        http://www.vianetz.com
  * @copyright   Copyright (c) since 2006 vianetz - C. Massmann (http://www.vianetz.com)
- * @license     http://www.vianetz.com/license Commercial Software License
+ * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU GENERAL PUBLIC LICENSE
  */
 class Vianetz_CheckoutAttributes_Helper_Log extends Mage_Core_Helper_Abstract
 {
@@ -25,13 +25,14 @@ class Vianetz_CheckoutAttributes_Helper_Log extends Mage_Core_Helper_Abstract
      * @param string $message
      * @param int $type
      *
-     * @return Vianetz_Core_Helper_Log
+     * @return Vianetz_CheckoutAttributes_Helper_Log
      */
-    public function log($message, $type = LOG_DEBUG, $extensionNamespace = null)
+    public function log($message, $type = LOG_DEBUG)
     {
-        $extensionVersion = Mage::getConfig()->getModuleConfig($extensionNamespace)->version;
-        $message = $extensionNamespace . ' v' . $extensionVersion . ': ' . $message;
-        $logFilename = $extensionNamespace . '.log';
+        $moduleName = Mage::app()->getRequest()->getModuleName();
+        $extensionVersion = Mage::getConfig()->getModuleConfig($moduleName)->version;
+        $message = $moduleName . ' v' . $extensionVersion . ': ' . $message;
+        $logFilename = $moduleName . '.log';
 
         Mage::log($message, $type, $logFilename, true);
 
