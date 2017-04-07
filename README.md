@@ -3,7 +3,6 @@ Vianetz Checkout Attributes Extension for Magento
 
 Facts
 -----
-- version: 1.0.1
 - extension key: Vianetz_CheckoutAttributes
 
 Description

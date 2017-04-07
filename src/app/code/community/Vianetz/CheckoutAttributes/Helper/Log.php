@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckoutAttributes Helper
+ * Core Log Helper class
  *
  * @section LICENSE
  * This file is created by vianetz <info@vianetz.com>.
@@ -12,38 +12,30 @@
  * to license@vianetz.com so we can send you a copy immediately.
  *
  * @category    Vianetz
- * @package     Vianetz_CheckoutAttributes
+ * @package     Vianetz_Core
  * @author      Christoph Massmann, <C.Massmann@vianetz.com>
  * @link        http://www.vianetz.com
  * @copyright   Copyright (c) 2006-16 vianetz - C. Massmann (http://www.vianetz.com)
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU GENERAL PUBLIC LICENSE
+ * @license     http://www.vianetz.com/license Commercial Software License
  */
-class Vianetz_CheckoutAttributes_Helper_Data extends Mage_Core_Helper_Abstract
+class Vianetz_CheckoutAttributes_Helper_Log extends Mage_Core_Helper_Abstract
 {
-    /**
-     * @var string
-     */
-    const CUSTOM_ATTRIBUTES_XML_CONFIG_PATH = 'vianetz_checkoutattributes/custom_attributes';
-    
     /**
      * Log message to file if enabled in system configuration.
      *
      * @param string $message
      * @param int $type
      *
-     * @return Vianetz_CheckoutAttributes_Helper_Data
+     * @return Vianetz_Core_Helper_Log
      */
-    public function log($message, $type = LOG_DEBUG)
+    public function log($message, $type = LOG_DEBUG, $extensionNamespace = null)
     {
-        Mage::helper('vianetz_core/log')->log($message, $type, 'Vianetz_CheckoutAttributes');
-        return $this;
-    }
+        $extensionVersion = Mage::getConfig()->getModuleConfig($extensionNamespace)->version;
+        $message = $extensionNamespace . ' v' . $extensionVersion . ': ' . $message;
+        $logFilename = $extensionNamespace . '.log';
 
-    /**
-     * @return array
-     */
-    public function getCustomAttributes()
-    {
-        return explode(',', Mage::getStoreConfig(self::CUSTOM_ATTRIBUTES_XML_CONFIG_PATH));
+        Mage::log($message, $type, $logFilename, true);
+
+        return $this;
     }
 }

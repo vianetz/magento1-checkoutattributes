@@ -17,7 +17,6 @@
  * @link        http://www.vianetz.com
  * @copyright   Copyright (c) 2006-16 vianetz - C. Massmann (http://www.vianetz.com)
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU GENERAL PUBLIC LICENSE
- * @version     %%MODULE_VERSION%%
  */
 class Vianetz_CheckoutAttributes_Model_Observer extends Mage_Core_Model_Observer
 {
@@ -39,7 +38,7 @@ class Vianetz_CheckoutAttributes_Model_Observer extends Mage_Core_Model_Observer
             $quoteValue = $quote->getData($attributeName);
             if (isset($post['vianetz_checkoutattributes']) === true && empty($post['vianetz_checkoutattributes'][$attributeName]) === false) {
                 $value = $post['vianetz_checkoutattributes'][$attributeName];
-            } else if (empty($quoteValue) === false) {
+            } elseif (empty($quoteValue) === false) {
                 $value = $quoteValue;
             } else {
                 continue;
