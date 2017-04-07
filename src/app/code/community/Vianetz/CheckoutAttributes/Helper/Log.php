@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckoutAttributes Order Model
+ * Core Log Helper class
  *
  * @section LICENSE
  * This file is created by vianetz <info@vianetz.com>.
@@ -17,38 +17,25 @@
  * @copyright   Copyright (c) since 2006 vianetz - C. Massmann (http://www.vianetz.com)
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU GENERAL PUBLIC LICENSE
  */
-class Vianetz_CheckoutAttributes_Model_Sales_Order extends Mage_Core_Model_Abstract
+class Vianetz_CheckoutAttributes_Helper_Log extends Mage_Core_Helper_Abstract
 {
     /**
+     * Log message to file if enabled in system configuration.
      *
+     * @param string $message
+     * @param int $type
+     *
+     * @return Vianetz_CheckoutAttributes_Helper_Log
      */
-    public function _construct()
+    public function log($message, $type = LOG_DEBUG)
     {
-        parent::_construct();
-        $this->_init('vianetz_checkoutattributes/sales_order');
-    }
+        $moduleName = Mage::app()->getRequest()->getModuleName();
+        $extensionVersion = Mage::getConfig()->getModuleConfig($moduleName)->version;
+        $message = $moduleName . ' v' . $extensionVersion . ': ' . $message;
+        $logFilename = $moduleName . '.log';
 
-    /**
-     * @param $order_id
-     * @param $var
-     */
-    public function deleteByOrder($orderId, $var)
-    {
-        $this->_getResource()->deleteByOrder($orderId, $var);
-        
+        Mage::log($message, $type, $logFilename, true);
+
         return $this;
-    }
-
-    /**
-     * Get variable from order.
-     *
-     * @param        $order_id
-     * @param string $var
-     *
-     * @return mixed
-     */
-    public function getByOrder($orderId, $var = '')
-    {
-        return $this->_getResource()->getByOrder($orderId, $var);
     }
 }
